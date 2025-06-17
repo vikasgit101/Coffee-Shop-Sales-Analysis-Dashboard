@@ -111,7 +111,7 @@ Which days are above average, below average, or on par?
 
 👨‍💻 Author
 Vikas Kumar
-📬 Email: [your.email@example.com]
-🔗 LinkedIn
+📬 Email: vk328696@gmail.com
+🔗 LinkedIn: www.linkedin.com/in/vikas-ku
 
 
