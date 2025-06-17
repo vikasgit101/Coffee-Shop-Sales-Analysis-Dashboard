@@ -99,16 +99,6 @@ What is the daily sales trend for a given month?
 
 Which days are above average, below average, or on par?
 
-
-## 🧩 Future Enhancements
-🔄 Automate daily data refresh using Power BI Service
-
-🌐 Host dashboard online (Power BI Cloud / Streamlit)
-
-📂 Integrate product-level drilldowns
-
-📊 Add forecasting and trendline analysis
-
 👨‍💻 Author
 Vikas Kumar
 📬 Email: vk328696@gmail.com
