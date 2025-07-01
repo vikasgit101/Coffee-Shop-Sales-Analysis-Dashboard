@@ -1,107 +1,166 @@
-# ☕ Coffee Shop Sales Dashboard
+# ☕ Coffee Shop Sales Analysis Dashboard (SQL + Power BI)
 
-📊 An end-to-end Business Intelligence (BI) project that analyzes sales data for a coffee shop chain using **SQL** and **Power BI**. The project showcases how raw transactional data can be transformed into meaningful, actionable insights through data cleaning, analysis, and visualization.
-
----
-
-## 🔍 Overview
-
-This dashboard provides decision-makers with deep insights into:
-
-- 🔄 Month-over-Month sales performance
-- 🏪 Store-wise comparison of total revenue
-- 🕒 Weekday vs weekend behavior
-- 🧁 Top-selling product categories and types
-- 📆 Daily sales breakdown with performance classification
-- 🎯 Specific day analysis and location trends
-
-It is designed to help managers, analysts, and business owners identify growth opportunities and operational inefficiencies.
+> 📊 A complete business intelligence project analyzing real-time sales data of a coffee shop using **SQL for data transformation** and **Power BI for dashboard visualization**.
 
 ---
 
-## 📁 Folder Structure
+## 📚 Table of Contents
 
-coffee-shop-sales-dashboard/
-├── data/
-│ └── Coffee Shop Sales.csv # Raw data
-├── sql/
-│ └── Coffee Shop Sales_sq.sql # SQL data cleaning & insights queries
-├── dashboard/
-│ └── dash.pbix # Final Power BI dashboard
-├── assets/
-│ └── dashboard-preview.png # Dashboard screenshot for README
-├── README.md
-├── .gitignore
-
-
-
+- [📌 Project Overview](#-project-overview)
+- [🎯 STAR-Based Summary](#-star-based-summary)
+- [📁 Dataset](#-dataset)
+- [🎯 Business Objectives](#-business-objectives)
+- [🛠️ Tools & Technologies](#-tools--technologies)
+- [📊 KPIs & SQL Logic](#-kpis--sql-logic)
+- [📈 Power BI Dashboard Highlights](#-power-bi-dashboard-highlights)
+- [🧠 Key Skills Used](#-key-skills-used)
+- [📁 Project Structure](#-project-structure)
+- [💡 Business Insights](#-business-insights)
+- [📣 Keywords & Hashtags](#-keywords--hashtags)
+- [🙋‍♂️ Author](#-author)
 
 ---
 
-## 🚀 Features
+## 📌 Project Overview
 
-- ✔️ Clean and transform CSV data using SQL
-- 📊 Perform advanced aggregation and KPI analysis
-- 🧠 Classify daily sales as Above/Below/Average
-- 🌐 Generate weekday vs weekend revenue splits
-- 🥇 Rank stores and product types by performance
-- 📈 Visualize insights in an interactive Power BI dashboard
+This project analyzes real-world sales data from a coffee shop chain to help the business understand product performance, store-wise sales, and customer behavior over time.
+
+Using **SQL for backend analysis** and **Power BI for visualization**, this end-to-end project transforms raw transactional data into actionable dashboards that drive better decision-making.
 
 ---
 
-## 🛠️ Technologies Used
+## 🎯 STAR-Based Summary
 
-| Tool           | Purpose                    |
-|----------------|----------------------------|
-| **Power BI**   | Data visualization         |
-| **MySQL**      | Data transformation + SQL queries |
-| **CSV Format** | Source transactional data  |
-| **Markdown**   | Project documentation      |
+**S – Situation:**  
+The coffee shop management lacked visibility into sales trends across months, locations, and products.
+
+**T – Task:**  
+Clean, analyze, and visualize the sales data to uncover high-performing stores, products, and revenue patterns.
+
+**A – Action:**  
+- Cleaned and restructured data using SQL (date/time formatting, column standardization)  
+- Calculated KPIs using SQL: total sales, quantity, orders, MoM growth  
+- Applied window functions (`LAG()`, `OVER()`) and `CASE WHEN` logic  
+- Built an interactive **Power BI dashboard** to visualize product, store, and time-based trends
+
+**R – Result:**  
+- Delivered a robust dashboard showing trends, peak days, and top-performing categories  
+- Enabled business leaders to monitor KPIs, compare store locations, and optimize operations
 
 ---
 
-## 🧪 How to Use This Project
+## 📁 Dataset
 
-### 1️⃣ Clone the Repository
+- **Source:** Coffee Shop Transactions (CSV)  
+- **Records:** Thousands of orders across months  
+- **Fields Include:**  
+  - Transaction ID, Date, Time  
+  - Store Location  
+  - Product Category & Type  
+  - Unit Price & Quantity  
+  - Total Sales (calculated)
 
-git clone https://github.com/your-username/coffee-shop-sales-dashboard.git
-cd coffee-shop-sales-dashboard
+---
 
+## 🎯 Business Objectives
 
-### 2️⃣ Load & Analyze Data
+- Analyze monthly, daily, and hourly sales trends  
+- Compare performance between stores and products  
+- Calculate growth metrics (MoM, YoY)  
+- Identify top-selling products and high-revenue categories  
+- Classify daily performance (Above/Below Average)
 
-Open Coffee Shop Sales_sq.sql in MySQL Workbench or compatible SQL IDE
+---
 
-Run queries to clean, reformat, and analyze data
+## 🛠️ Tools & Technologies
 
-### 3️⃣ Explore the Dashboard
+| Tool | Use |
+|------|-----|
+| **SQL (MySQL)** | Data cleaning, aggregation, and KPI generation |
+| **Power BI** | Data visualization & dashboard design |
+| **Excel (Optional)** | Exploratory data viewing |
+| **DAX (optional)** | Custom measures in Power BI |
 
-Open dash.pbix in Power BI Desktop
+---
 
-Review and interact with visualizations
+## 📊 KPIs & SQL Logic
 
-Use filters to dive deeper into product, store, and time-based insights
+- ✅ **Total Sales**: `SUM(unit_price * transaction_qty)`
+- ✅ **Total Orders**: `COUNT(transact_id)`
+- ✅ **Total Quantity Sold**: `SUM(transaction_qty)`
+- ✅ **MoM Growth**: `LAG() OVER()` for month comparisons
+- ✅ **Sales Status** (Above/Below Average):
+  ```sql
+  CASE
+    WHEN total_sales > (SELECT AVG(total_sales) FROM daily_sales) THEN 'Above Average'
+    WHEN total_sales < (SELECT AVG(total_sales) FROM daily_sales) THEN 'Below Average'
+    ELSE 'Average'
+  END
+  ```
+- ✅ **Weekend vs Weekday Sales**: Using `DAYOFWEEK()`
 
-## 📊 Dashboard Preview
-Here’s a sneak peek at the Power BI dashboard:
+---
 
+## 📈 Power BI Dashboard Highlights
 
-📌 The dashboard includes KPIs such as total revenue, order quantity, store performance, top-selling categories, and month-over-month growth.
+- 📍 **Sales by Store Location**  
+- 📦 **Top 10 Product Types**  
+- 📆 **Day-wise Sales Trends**  
+- 🕒 **Time-of-day Analysis**  
+- 📈 **Month-over-Month Growth**  
+- 📊 **Visual KPIs for Executives**
 
-### 🌟 Key Insights You Can Extract
-Which store generates the most sales in May?
+*Dashboard file: `dash.pbix`*
 
-How do weekends compare with weekdays in performance?
+---
 
-Which product types are your top performers?
+## 🧠 Key Skills Used
 
-What is the daily sales trend for a given month?
+- SQL Aggregations & Joins  
+- CTEs & Window Functions (`LAG`, `OVER`)  
+- CASE Logic for Classification  
+- Power BI Dashboard Design  
+- Data Cleaning & Time Format Conversion
 
-Which days are above average, below average, or on par?
+---
 
-👨‍💻 Author
-Vikas Kumar
-📬 Email: vk328696@gmail.com
-🔗 LinkedIn: www.linkedin.com/in/vikas-ku
+## 📁 Project Structure
 
+```
+📦 Coffee-Shop-Sales
+├── 📄 Coffee Shop Sales.csv           # Raw transactional dataset
+├── 🐘 Coffee Shop Sales_sq.sql       # SQL file with all queries
+├── 📊 dash.pbix                       # Final Power BI dashboard
+├── 📄 README.md                       # Project documentation
+```
 
+---
+
+## 💡 Business Insights
+
+- 🔝 **Store A** generated the highest monthly revenue  
+- 🧃 **Cold Drinks & Bakery Items** were best-sellers in May  
+- 📅 **Weekends** had higher average sales than weekdays  
+- 🚀 MoM Growth in orders showed **12.5% increase in May**
+
+---
+
+## 📣 Keywords & Hashtags
+
+**Keywords:**  
+Retail Analytics, SQL Reporting, Sales Dashboard, Data-Driven Decisions, Coffee Shop BI, KPI Design, Time Series Trends
+
+**Hashtags:**  
+#SQL #PowerBI #DataAnalytics #RetailInsights #SalesDashboard #GitHubPortfolio  
+#VikasKumarProjects #BusinessIntelligence
+
+---
+
+## 🙋‍♂️ Author
+
+**Vikas Kumar**  
+📧 Email: vk328696@gmail.com  
+🔗 LinkedIn: [linkedin.com/in/vikas-ku](https://linkedin.com/in/vikas-ku)  
+📂 GitHub: [github.com/vikasgit101](https://github.com/vikasgit101)
+
+> ⭐ *If you found this project useful, give it a star and connect with me on LinkedIn!*
